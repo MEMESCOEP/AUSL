@@ -225,7 +225,7 @@ class BasicExecute:
 			try:
 				
 				vardeeta = (str(self.env[node[1]]).replace('"', ''))
-				print(vardeeta)
+				#print(vardeeta)
 				return self.env[node[1]]
 			except LookupError:
 				print("Undefined variable '"+node[1]+"'")
