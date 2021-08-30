@@ -5,28 +5,30 @@ print(AUSL Example Program!)
 ##Simple Math problem
 ##These problems will be calculated and the results will be printed to console
 
+print(6+9 = )
 6+9
+print()
 
 l1 = "A"
 l2 = "B"
 l3 = "C"
 l4 = "D"
 l5 = "E"
-
+l6 = "F"
 
 
 ##You can print a variable's output by using it's name
-string = l1+l2+l3+l4+l5
+string = l1+l2+l3+l4+l5+l6
 string
 
-
+print()
 
 ##Simple Download Example
 print(Downloading file from url...)
 download(https://www.google.com, DownloadedFile.html)
 print(done downloading!)
 
-
+print()
 
 
 ##Simple HTTP web server example! (REQUIRES ROOT || Uncomment to run)
@@ -34,7 +36,7 @@ print(done downloading!)
 ##httpserver.startServer()
 
 
-
+os.do(echo This line was printed from The Console!)
 
 
 print(done)
