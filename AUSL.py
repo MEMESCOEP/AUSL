@@ -99,7 +99,7 @@ class BasicParser(Parser):
 	
 	def statement(self, p):
 		#deeta = p.STRING.replace('"', '')
-                #deeta = deeta.replace('\n', ' ').replace('\r', '')
+		#deeta = deeta.replace('\n', ' ').replace('\r', '')
 		return p.var_assign
 
 	@_('NAME "=" expr')
@@ -151,7 +151,7 @@ class BasicParser(Parser):
 		deeta = deeta.replace('\n', ' ').replace('\r', '')
 		#print(deeta)
 		#print(vardeeta)
-		#return 0
+		#direturn 0
 		return ('var', deeta)
 		#stop()
 
@@ -243,6 +243,7 @@ class BasicExecute:
 
 if __name__ == '__main__':
 	doLexing = True
+	doneFirstParse = False
 	lexer = BasicLexer()
 	parser = BasicParser()
 	#print('GFG Language')
@@ -262,115 +263,279 @@ if __name__ == '__main__':
 				#pass
 			file1 = open(filename, 'r')
 			Lines = file1.readlines()
+			#	sys.exit(0)
  
 			count = 0
+			count2 = 0
+
+			for line in Lines:
+				count += 1
+
+				
 			# Strips the newline character
 			for line in Lines:
 				
-				doLexing = True
-				#print(doLexing, "\n\n")
-				count += 1
-				#print("Line{}: {}".format(count, line.strip()))
 				text = line.strip()
-				#input('AUSL > ')
-				if text == "end":
-								sys.exit(0)
+
+
+
+				if doneFirstParse == False:
+							count2 += 1;
+							file1 = open(filename, 'r')
+							Lines = file1.readlines()
+							doLexing = False
+							if text == "end":
+										0+0
+										#sys.exit(0)
 
 
 
 
-				if text == "httpserver.startServer()":
-					doLexing = False
-					# Make sure the server is created at current directory
-					os.chdir('.')
-					# Create server object listening the port 80
-					server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
-					# Start the web server
-					server_object.serve_forever()
-				if text == "beanslmao":
-					print("BEANS wtfffffff")
-					#break
-				if "print(" in text and not "##" in text:
-					#print("lol")
-					doLexing = False
-					length = len(text)
-					#Get last character of string i.e. char at index position len -1
-					last_char = text[length -1]
-					if last_char == ")":
-						
-						print ((text.split("print(",1)[1])[:-1])
-						#text = ""
-					else:
-						print("Missing Parentheses at end of instruction!")
+							if text == "httpserver.startServer()":
+								0+0
+								#doLexing = False
+								# Make sure the server is created at current directory
+								#os.chdir('.')
+								# Create server object listening the port 80
+								#server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
+								# Start the web server
+								#server_object.serve_forever()
+							if text == "beanslmao":
+								0+0
+								#print("BEANS wtfffffff")
+								#break
+							if "print(" in text and not "##" in text:
+								#print("lol")
+								#doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									0+0
+									#print ((text.split("print(",1)[1])[:-1])
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+							if "os.do(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
 
 
 
 
-				if "download(" in text and not "##" in text:
-					#print("lol")
-					doLexing = False
-					length = len(text)
-					#Get last character of string i.e. char at index position len -1
-					last_char = text[length -1]
-					if last_char == ")":
-						start = text. find(",") + len(",")
-						end = text.find(")")
-						substring = text[start:end]
-						#print(substring.split())
-						urladdr = text.split("download(",1)[1][:-1]
-						urladdr = urladdr.split(",")[0]
-						#print(urladdr)
-						r = requests.get(urladdr, allow_redirects=True)
-						open(substring, 'wb').write(r.content)
-						#print ((text.split("download(",1)[1])[:-1])
-						#text = ""
-					else:
-						print("Missing Parentheses at end of instruction!")
+
+							if "download(" in text and not "##" in text:
+								#print("lol")
+								#doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									#start = text. find(",") + len(",")
+									#end = text.find(")")
+									#substring = text[start:end]
+									#print(substring.split())
+									#urladdr = text.split("download(",1)[1][:-1]
+									#urladdr = urladdr.split(",")[0]
+									#print(urladdr)
+									#r = requests.get(urladdr, allow_redirects=True)
+									#open(substring, 'wb').write(r.content)
+									#print ((text.split("download(",1)[1])[:-1])
+									#text = ""
+									0+0
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
 
 
 
 
-				if "inp(" in text and not "##" in text:
-					#print("lol")
-					doLexing = False
-					
-					length = len(text)
-					#Get last character of string i.e. char at index position len -1
-					last_char = text[length -1]
-					if last_char == ")":
+							if "inp(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
 
-						#print("wat")
-						data = input ((text.split("inp(",1)[1])[:-1])
-						def var_assign(self, p):
-							return ('var_assign', "A", data)
-						#text = ""
-					else:
-						print("Missing Parentheses at end of instruction!")
+									#print("wat")
+									data = input ((text.split("inp(",1)[1])[:-1])
+									def var_assign(self, p):
+										return ('var_assign', "A", data)
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction!" + bcolors.ENDC)
+									sys.exit(1)
 
 
 
-				#print(doLexing)
+							#print(doLexing)
 
-				if text and doLexing == True:
-						if text != "beanslmao" or text != "exit":
-													try:
-																												tree = parser.parse(lexer.tokenize(text))
-																												BasicExecute(tree, env)
-													except Exception as ex:
-														
-																template = "\nAn exception of type {0} occurred. Arguments:\n{1!r}\n"
-																message = template.format(type(ex).__name__, ex.args)
-																print (bcolors.FAIL + message + bcolors.ENDC)
+							if text and doLexing == True:
+									if text != "beanslmao" or text != "exit":
+																try:
+																															tree = parser.parse(lexer.tokenize(text))
+																															BasicExecute(tree, env)
+																except Exception as ex:
+																	
+																			template = "\nAn exception of type {0} occurred. Arguments:\n{1!r}\n"
+																			message = template.format(type(ex).__name__, ex.args)
+																			print (bcolors.FAIL + message + bcolors.ENDC)
 
+
+
+							if count2 >= count:
+								doLexing = True
+								doneFirstParse = True
 
 				
 
+
+				
+					
+				if True:
+					file1 = open(filename, 'r')
+					Lines = file1.readlines()
+
+					for line in Lines:
+						
+						if doneFirstParse == True:
+							text = line.strip()
+							#print("LOL")
+							file1 = open(filename, 'r')
+							Lines = file1.readlines()
+							doLexing = True
+							if text == "end":
+										sys.exit(0)
+
+
+
+
+							if text == "httpserver.startServer()":
+								doLexing = False
+								# Make sure the server is created at current directory
+								os.chdir('.')
+								# Create server object listening the port 80
+								server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
+								# Start the web server
+								server_object.serve_forever()
+							if text == "beanslmao":
+								print("BEANS wtfffffff")
+								#break
+							if "print(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									
+									print ((text.split("print(",1)[1])[:-1])
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+							if "os.do(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
+							if "download(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									start = text. find(",") + len(",")
+									end = text.find(")")
+									substring = text[start:end]
+									#print(substring.split())
+									urladdr = text.split("download(",1)[1][:-1]
+									urladdr = urladdr.split(",")[0]
+									#print(urladdr)
+									r = requests.get(urladdr, allow_redirects=True)
+									open(substring, 'wb').write(r.content)
+									#print ((text.split("download(",1)[1])[:-1])
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
+							if "inp(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+
+									#print("wat")
+									data = input ((text.split("inp(",1)[1])[:-1])
+									def var_assign(self, p):
+										return ('var_assign', "A", data)
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction!" + bcolors.ENDC)
+
+
+
+							#print(doLexing)
+
+							if text and doLexing == True:
+									if text != "beanslmao" or text != "exit":
+																try:
+																															tree = parser.parse(lexer.tokenize(text))
+																															BasicExecute(tree, env)
+																except Exception as ex:
+																	
+																			template = "\nAn exception of type {0} occurred. Arguments:\n{1!r}\n"
+																			message = template.format(type(ex).__name__, ex.args)
+																			print (bcolors.FAIL + message + bcolors.ENDC)
+
+				
+
+								
 		except EOFError:
 			print("error")
 		
 		
 
-class httpserver():
+"""class httpserver():
 	
 		# Make sure the server is created at current directory
 		os.chdir('.')
@@ -379,3 +544,4 @@ class httpserver():
 		# Start the web server
 		server_object.serve_forever()
 
+"""
