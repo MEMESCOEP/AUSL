@@ -5,9 +5,19 @@ import requests
 import sys
 import time
 import os
+import platform
+import threading
+import subprocess
+import traceback
 from http.server import HTTPServer, CGIHTTPRequestHandler
-
-
+from playsound import playsound
+#soundfilename = ""
+def play_sound(flnm):
+	#t = threading.thread(tagret=none)
+	#t.daemon = True
+	#t.start()
+	playsound(flnm)
+	#0+0
 
 
 class bcolors:
@@ -26,10 +36,10 @@ class bcolors:
 
 
 class BasicLexer(Lexer):
-	tokens = { NAME, NUMBER, STRING, PRINT, INP }
+	tokens = { NAME, NUMBER, STRING, PRINT}
 	ignore = '\t '
 	literals = { '=', '+', '-', '/',
-				'*', '(', ')', ',', ';', '#'}
+				'*', '(', ')', ',', ';', '#', 'IN'}
 
 
 	# Define tokens as regular expressions
@@ -89,10 +99,7 @@ class BasicParser(Parser):
 	def expr(self, p):
 		return p.expr
 
-	@_('INP "("')
-	def expr(self, p):
-		return p.expr
-
+	
 	
 		
 	@_('var_assign')
@@ -114,7 +121,13 @@ class BasicParser(Parser):
 		###deeta = p.STRING.replace('"', '')
 		###deeta = deeta.replace('\n', ' ').replace('\r', '')
 		###print(deeta)
-		return ('var_assign', p.NAME, p.STRING)
+		if p.STRING == "\"INP()\"":
+			deetalmao = input(">>")
+			#print(deetalmao)
+			return ('var_assign', p.NAME, deetalmao)
+		else:
+			#print("LALALALAL")
+			return ('var_assign', p.NAME, p.STRING)
 
 	@_('expr')
 	def statement(self, p):
@@ -152,7 +165,7 @@ class BasicParser(Parser):
 		#print(deeta)
 		#print(vardeeta)
 		#direturn 0
-		return ('var', deeta)
+		return ('var', p.NAME)
 		#stop()
 
 	@_('NUMBER')
@@ -228,8 +241,8 @@ class BasicExecute:
 				#print(vardeeta)
 				return self.env[node[1]]
 			except LookupError:
-				print("Undefined variable '"+node[1]+"'")
-				return 0
+				print(bcolors.FAIL + "Undefined variable '"+node[1]+"'" + bcolors.ENDC + '\n')
+				return None
 
 
 
@@ -244,6 +257,7 @@ class BasicExecute:
 if __name__ == '__main__':
 	doLexing = True
 	doneFirstParse = False
+	#playsound("./ome.wav")
 	lexer = BasicLexer()
 	parser = BasicParser()
 	#print('GFG Language')
@@ -286,6 +300,116 @@ if __name__ == '__main__':
 							doLexing = False
 							if text == "end":
 										0+0
+
+
+
+
+
+
+							if "File.Write(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+							if "File.Delete(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+
+
+							if "pause(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+
+
+
+
+
+							
+							if "Sound.Play(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+
+
+
+							if "Sound.Play(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+
+
+
 										#sys.exit(0)
 
 
@@ -300,11 +424,29 @@ if __name__ == '__main__':
 								#server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
 								# Start the web server
 								#server_object.serve_forever()
-							if text == "beanslmao":
-								0+0
-								#print("BEANS wtfffffff")
-								#break
+							
 							if "print(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
+
+
+
+
+							
 								#print("lol")
 								#doLexing = False
 								length = len(text)
@@ -337,9 +479,11 @@ if __name__ == '__main__':
 									sys.exit(1)
 
 
+							
 
 
 
+							
 							if "download(" in text and not "##" in text:
 								#print("lol")
 								#doLexing = False
@@ -413,6 +557,7 @@ if __name__ == '__main__':
 				if True:
 					file1 = open(filename, 'r')
 					Lines = file1.readlines()
+					linenumber = 0
 
 					for line in Lines:
 						
@@ -422,6 +567,7 @@ if __name__ == '__main__':
 							file1 = open(filename, 'r')
 							Lines = file1.readlines()
 							doLexing = True
+							linenumber += 1
 							if text == "end":
 										sys.exit(0)
 
@@ -429,15 +575,22 @@ if __name__ == '__main__':
 
 
 							if text == "httpserver.startServer()":
+								try:
+									doLexing = False
+									# Make sure the server is created at current directory
+									os.chdir('.')
+									# Create server object listening the port 80
+									server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
+									# Start the web server
+									server_object.serve_forever()
+								except Exception as ex:
+																	
+									template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+									message = template.format(type(ex).__name__, ex.args)
+									print (bcolors.FAIL + message + bcolors.ENDC)
+							if text == "debug":
 								doLexing = False
-								# Make sure the server is created at current directory
-								os.chdir('.')
-								# Create server object listening the port 80
-								server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
-								# Start the web server
-								server_object.serve_forever()
-							if text == "beanslmao":
-								print("BEANS wtfffffff")
+								print("DEBUG lol")
 								#break
 							if "print(" in text and not "##" in text:
 								#print("lol")
@@ -452,6 +605,67 @@ if __name__ == '__main__':
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
+							if "pause(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									
+									time.sleep(int((text.split("pause(",1)[1])[:-1]))
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
+							if "File.Delete(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									
+									os.remove((text.split("File.Delete(",1)[1])[:-1])
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+							if "File.Write(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										start = text. find(",") + len(",")
+										end = text.find(")")
+										substring = text[start:end]
+										#print(substring.split())
+										filenm = text.split("File.Write(",1)[1][:-1]
+										filenm = filenm.split(",")[0]
+										#print(urladdr)
+										#r = requests.get(urladdr, allow_redirects=True)
+										open(filenm, 'w').write(substring)
+										#print ((text.split("download(",1)[1])[:-1])
+										#text = ""
+									except Exception as ex:
+																	
+										template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+										message = template.format(type(ex).__name__, ex.args)
+										print (bcolors.FAIL + message + bcolors.ENDC)
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
 							if "os.do(" in text and not "##" in text:
 								#print("lol")
 								doLexing = False
@@ -461,15 +675,72 @@ if __name__ == '__main__':
 								if last_char == ")":
 									try:
 										output = os.system ((text.split("os.do(",1)[1])[:-1])
-										#print(output)
-									except:
-										print("error")
+										#print((text.split("os.do(",1)[1])[:-1])
+									except Exception as ex:
+																	
+										template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+										message = template.format(type(ex).__name__, ex.args)
+										print (bcolors.FAIL + message + bcolors.ENDC)
 									#text = ""
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
+							if "Sound.Play(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										t = threading.Thread(target=play_sound((text.split("Sound.Play(",1)[1])[:-1]))
+										t.daemon = True
+										t.start()
+										#playsound((text.split("Sound.Play(",1)[1])[:-1])
+										#print(output)
+									except Exception as ex:
+																	
+										template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+										message = template.format(type(ex).__name__, ex.args)
+										print (bcolors.FAIL + message + bcolors.ENDC)
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									#sys.exit(1)
 
 
+							if "os.version" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								try:
+									print("OS Version: ", platform.system(), platform.version())
+								except Exception as ex:
+																	
+									template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+									message = template.format(type(ex).__name__, ex.args)
+									print (bcolors.FAIL + message + bcolors.ENDC)
+									
+								#length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								#last_char = text[length -1]
+								#if last_char == ")":
+								#	try:
+								#		0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+								#		playsound((text.split("Sound.Play(",1)[1])[:-1])
+										#print(output)
+								#	except:
+								#		print("error")
+									#text = ""
+								#else:
+								#	print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									#sys.exit(1)
+
+
+
+							
 
 							if "download(" in text and not "##" in text:
 								#print("lol")
@@ -478,17 +749,24 @@ if __name__ == '__main__':
 								#Get last character of string i.e. char at index position len -1
 								last_char = text[length -1]
 								if last_char == ")":
-									start = text. find(",") + len(",")
-									end = text.find(")")
-									substring = text[start:end]
-									#print(substring.split())
-									urladdr = text.split("download(",1)[1][:-1]
-									urladdr = urladdr.split(",")[0]
-									#print(urladdr)
-									r = requests.get(urladdr, allow_redirects=True)
-									open(substring, 'wb').write(r.content)
-									#print ((text.split("download(",1)[1])[:-1])
-									#text = ""
+									try:
+										start = text. find(",") + len(",")
+										end = text.find(")")
+										substring = text[start:end]
+										#print(substring.split())
+										urladdr = text.split("download(",1)[1][:-1]
+										urladdr = urladdr.split(",")[0]
+										#print(urladdr)
+										r = requests.get(urladdr, allow_redirects=True)
+										open(substring, 'wb').write(r.content)
+										#file6.close()
+										#print ((text.split("download(",1)[1])[:-1])
+										#text = ""
+									except Exception as ex:
+																	
+										template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
+										message = template.format(type(ex).__name__, ex.args)
+										print (bcolors.FAIL + message + bcolors.ENDC)
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
@@ -517,7 +795,7 @@ if __name__ == '__main__':
 							#print(doLexing)
 
 							if text and doLexing == True:
-									if text != "beanslmao" or text != "exit":
+									if text != "DEBUG" or text != "exit":
 																try:
 																															tree = parser.parse(lexer.tokenize(text))
 																															BasicExecute(tree, env)
