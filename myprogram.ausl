@@ -1,43 +1,65 @@
-##AUSL Example Program, (C) xxxMEMESCOEPxxx 2021
-##Make comments with "##"!
+##AUSL Example Program!
+##AUSL Programming Language (c) Andrew Maney 2021
 print(AUSL Example Program!)
 
-##Simple Math problem
-##These problems will be calculated and the results will be printed to console
-
-print(6+9 = )
-6+9
-print()
-
+##Assigning Variables Example
 l1 = "A"
 l2 = "B"
 l3 = "C"
 l4 = "D"
 l5 = "E"
-l6 = "F"
+string = l1+l2+l3+l4+l5
 
 
-##You can print a variable's output by using it's name
-string = l1+l2+l3+l4+l5+l6
+##Print a variable's contents using it's name
 string
 
-print()
 
-##Simple Download Example
-print(Downloading file from url...)
-download(https://www.google.com, DownloadedFile.html)
-print(done downloading!)
-
-print()
+##Print using "print(<string>)"!
+print(Hello World!)
 
 
-##Simple HTTP web server example! (REQUIRES ROOT || Uncomment to run)
-##print(Simple HTTP server!)
+##Do Math Equations!
+1000 + 200 + 30 + 4
+
+
+
+##Download files from a url with "download(<URL>, <FILENAME>)"!
+download(http://www.google.com, downloadedFile.html)
+
+
+##Simple OS Interaction!
+os.do(echo "The OS printed this line!")
+os.version()
+
+
+
+##File Write Example
+File.Write(text.txt, Successful Test)
+
+
+##Halt your program with "pause(<duration>)"!
+print(pausing for 5 seconds...)
+pause(5)
+print(I was printed after 5 seconds.)
+
+
+##File Delete Example
+File.Delete(text.txt)
+
+
+
+##Play sounds with "Sound.Play(<FILENAME>)"!
+Sound.Play(./ome.wav)
+
+
+
+##Simple Web Server: (Requires Root! || Uncomment to run!)
+##print(Starting web server...)
 ##httpserver.startServer()
+##print(web server done)
 
 
-os.do(echo This line was printed from The Console!)
 
-
-print(done)
+print(End of example.)
 end
