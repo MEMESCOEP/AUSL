@@ -48,6 +48,7 @@ if isdir == True:
 
         print("Pulling data from server...")
         os.system("""
+	
 rm -rf AUSL_latest
 mkdir AUSL_latest
 	cd AUSL_latest
@@ -79,4 +80,7 @@ mkdir AUSL_latest
 print("AUSL is installed! you can start your own programs using \"sudo ./AUSL.bin <PROGRAM_NAME.ausl>\"")
 deeta = input("Run the example program? (Y/N) >> ")
 if deeta == "Y" or deeta == "y":
-    os.system("sudo ./AUSL.bin myprogram.ausl")        
+    os.system("""
+    cd AUSL_latest
+    sudo AUSL.bin myprogram.ausl
+    """)        
