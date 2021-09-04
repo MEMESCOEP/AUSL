@@ -5,7 +5,7 @@ Accessible Unified Scripting Language (AUSL) is a programming language built to 
 ```
 Python 3.X
 Python 3.X's pip module
-Ubuntu 14
+Ubuntu 16.04.6 or later
 ```
 
 To get started, download 
