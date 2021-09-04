@@ -82,5 +82,5 @@ deeta = input("Run the example program? (Y/N) >> ")
 if deeta == "Y" or deeta == "y":
     os.system("""
     cd AUSL_latest
-    sudo AUSL.bin myprogram.ausl
+    sudo ./AUSL.bin myprogram.ausl
     """)        
