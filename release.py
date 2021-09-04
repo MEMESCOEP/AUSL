@@ -10,6 +10,10 @@ slyexists = importlib.util.find_spec("sly") is not None
 nuitkaexists = importlib.util.find_spec("nuitka") is not None
 playsoundexists = importlib.util.find_spec("playsound") is not None
 
+
+
+os.system("pip install pyobject")
+
 #print(slyexists)
 
 if slyexists == True:
