@@ -1,4 +1,5 @@
 # AUSL
+###### (C) Andrew Maney 2021
 Accessible Unified Scripting Language (AUSL) is a programming language built to develop simple linux console applications.
 ---
 ### Requirements
