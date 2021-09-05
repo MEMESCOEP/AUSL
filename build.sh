@@ -94,7 +94,7 @@ else
 	#Builds for Linux
 	else if [[ "$1" = "-linux" ]] || [[ "$2" = "-linux" ]] || [[ "$3" = "-linux" ]]; then
 	
-			printf "Building for Linux"
+			printf "Building for Linux...\n"
 		if [[ "$1" = "-verbose" ]] || [[ "$2" = "-verbose" ]] || [[ "$3" = "-	verbose" ]]; then
 			printf "Verbose is enabled.\n"
 			sudo python3 -m nuitka --standalone --onefile --verbose --follow-imports AUSL.py || build_failed
