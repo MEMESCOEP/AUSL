@@ -1,6 +1,6 @@
 # AUSL
 Accessible Unified Scripting Language (AUSL) is a programming language built to develop simple linux console applications.
-
+---
 ### Requirements
 ```
 Python 3.X
@@ -14,7 +14,7 @@ and run it as root:
 
 ```>> sudo python3 release.py```
 
-
+---
 
 ### Changelog:
 - Fixed release.py 'File not found: myprogram.ausl' error
