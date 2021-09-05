@@ -11,9 +11,14 @@ nuitkaexists = importlib.util.find_spec("nuitka") is not None
 playsoundexists = importlib.util.find_spec("playsound") is not None
 
 
-
-os.system("pip install pyobject")
-
+try:
+    os.system("pip install pygobject")
+except Exception as ex:
+																	
+																			template = "\nAn exception of type {0} occurred. Arguments:\n{1!r}\n"
+																			message = template.format(type(ex).__name__, ex.args)
+																			print (bcolors.FAIL + message + bcolors.ENDC)
+    
 #print(slyexists)
 
 if slyexists == True:
@@ -52,7 +57,6 @@ if isdir == True:
 
         print("Pulling data from server...")
         os.system("""
-	
 rm -rf AUSL_latest
 mkdir AUSL_latest
 	cd AUSL_latest
@@ -84,7 +88,4 @@ mkdir AUSL_latest
 print("AUSL is installed! you can start your own programs using \"sudo ./AUSL.bin <PROGRAM_NAME.ausl>\"")
 deeta = input("Run the example program? (Y/N) >> ")
 if deeta == "Y" or deeta == "y":
-    os.system("""
-    cd AUSL_latest
-    sudo ./AUSL.bin myprogram.ausl
-    """)        
+    os.system("sudo ./AUSL_latest/AUSL.bin myprogram.ausl")        
