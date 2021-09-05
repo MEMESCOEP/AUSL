@@ -12,11 +12,11 @@ To get started, download
 ```release.py```
 and run it as root:
 
-```>> sudo python3 release.py```
+>&nbsp;sudo python3 release.py&nbsp;
 
 ---
 
-### Changelog:
+### Change log:
 - Fixed release.py 'File not found: myprogram.ausl' error
 - Updated release.py to install build and project dependencies
 - Added new feature(s) to AUSL.py:<br>
