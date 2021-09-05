@@ -257,6 +257,7 @@ class BasicExecute:
 if __name__ == '__main__':
 	doLexing = True
 	doneFirstParse = False
+	Debug = False
 	#playsound("./ome.wav")
 	lexer = BasicLexer()
 	parser = BasicParser()
@@ -272,8 +273,8 @@ if __name__ == '__main__':
 				print("AUSL Programming Language help")
 				print("Usage:")
 				print(" ./AUSL.bin [program name]")
-				#sys.exit(0)
-				filename = "myprogram.ausl"
+				sys.exit(0)
+				#filename = "myprogram.ausl"
 				#pass
 			file1 = open(filename, 'r')
 			Lines = file1.readlines()
