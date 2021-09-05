@@ -1,5 +1,4 @@
 # AUSL
-###### (C) Andrew Maney 2021
 Accessible Unified Scripting Language (AUSL) is a programming language built to develop simple linux console applications.
 ---
 ### Requirements
@@ -23,3 +22,5 @@ and run it as root:
 - Added new feature(s) to AUSL.py:<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File IO Operations {Create/Write, Delete}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound Playback
+
+<br><br><br>(C) Andrew Maney 2021
