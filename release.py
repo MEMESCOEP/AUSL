@@ -14,6 +14,7 @@ playsoundexists = importlib.util.find_spec("playsound") is not None
 try:
     #os.system("sudo apt install libjpeg8-dev zlib1g-dev libtiff-dev libfreetype6 libfreetype6-dev libwebp-dev libopenjp2-7-dev libopenjp2-7-dev -y")
     os.system("sudo apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info")
+    os.system("python3 -m pip install --no-use-pep517  cm-rgb")
     #os.system("""pip3 install  --upgrade --force-reinstall --no-binary ":all:" pycairo""")
     os.system("pip install pygobject")
 except Exception as ex:
