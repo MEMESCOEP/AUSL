@@ -5,6 +5,7 @@ import requests
 import sys
 
 
+cwd = os.getcwd()
 
 slyexists = importlib.util.find_spec("sly") is not None
 nuitkaexists = importlib.util.find_spec("nuitka") is not None
@@ -92,4 +93,5 @@ mkdir AUSL_latest
 print("AUSL is installed! you can start your own programs using \"sudo ./AUSL.bin <PROGRAM_NAME.ausl>\"")
 deeta = input("Run the example program? (Y/N) >> ")
 if deeta == "Y" or deeta == "y":
-    os.system("sudo ./AUSL_latest/AUSL.bin myprogram.ausl")        
+    pathofbin = cwd
+    os.system("sudo ./AUSL_latest/AUSL.bin ./AUSL_latest/myprogram.ausl")        
