@@ -17,6 +17,7 @@ and run it as root:
 ---
 
 ### Change log:
+Version A-0.10
 - Fixed release.py 'File not found: myprogram.ausl' error
 - Updated release.py to install build and project dependencies
 - Added new feature(s) to AUSL.py:<br>
