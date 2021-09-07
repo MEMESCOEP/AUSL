@@ -6,6 +6,7 @@
 Python 3.X
 Python 3.X's pip module
 Ubuntu 16.04.6 or later
+release.py (this will install all build/install dependencies)
 ```
 
 To get started, download 
