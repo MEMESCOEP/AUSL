@@ -1,6 +1,10 @@
 ##AUSL Example Program!
 ##AUSL Programming Language (c) Andrew Maney 2021
-print(AUSL Example Program!)
+	
+
+##Clear Console
+os.do(clear)
+print("AUSL Example Program!")
 
 ##Assigning Variables Example
 l1 = "A"
@@ -8,24 +12,41 @@ l2 = "B"
 l3 = "C"
 l4 = "D"
 l5 = "E"
+n1 = 1
+n2 = 2
+n3 = n1+n2
 string = l1+l2+l3+l4+l5
 
 
 ##Print a variable's contents using it's name
+l1
+l2
+l3
+l4
+l5
+n3
 string
 
 
 ##Print using "print(<string>)"!
-print(Hello World!)
+print("Hello World!")
 
 
 ##Do Math Equations!
 1000 + 200 + 30 + 4
 
 
+##Get User Input and Print it back!
+input = inp(Enter Anything! >> )
+print("You Typed:" %input%)
+
+print("")
+
+
 
 ##Download files from a url with "download(<URL>, <FILENAME>)"!
-download(http://www.google.com, downloadedFile.html)
+print("Downloading 'www.google.com"' to file 'DownloadedFile.html'...)
+download(https://www.google.com, DownloadedFile.html)
 
 
 ##Simple OS Interaction!
@@ -34,32 +55,44 @@ os.version()
 
 
 
+##File Create Example
+print("Creating File 'testcreate.txt'..")
+File.Create(testcreate.txt)
+print("Done.")
+
+
+
 ##File Write Example
+print("Writing data to file 'text.txt'...")
 File.Write(text.txt, Successful Test)
+print("Done.")
 
 
 ##Halt your program with "pause(<duration>)"!
-print(pausing for 5 seconds...)
+print("pausing for 5 seconds...")
 pause(5)
-print(I was printed after 5 seconds.)
+print("I was printed after 5 seconds.")
 
 
 ##File Delete Example
+print("Deleting file 'text.txt'...")
 File.Delete(text.txt)
-
+print("Done.")
 
 
 ##Play sounds with "Sound.Play(<FILENAME>)"!
+print("Playing Sound...")
 Sound.Play(./ome.wav)
+print("Done.")
 
 
 
 ##Simple Web Server: (Requires Root! || Uncomment to run!)
-##print(Starting web server...)
+##print("Starting web server...")
 ##httpserver.startServer()
-##print(web server done)
+##print("web server done")
 
 
 
-print(End of example.)
+print("End of example :)")
 end
