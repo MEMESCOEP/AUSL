@@ -69,7 +69,7 @@ mkdir AUSL_latest
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/build.sh
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/myprogram.ausl
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/ome.wav
-	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/AUSL_compiler.py
+	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/AUSL_COMPILER.py
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/ausl_runtime.py
 	
 	sudo bash build.sh -linux
@@ -87,7 +87,7 @@ mkdir AUSL_latest
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/build.sh
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/myprogram.ausl
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/ome.wav
-	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/AUSL_compiler.py
+	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/AUSL_COMPILER.py
 	wget https://raw.githubusercontent.com/MEMESCOEP/AUSL/main/ausl_runtime.py
 	
 	sudo bash build.sh -linux
