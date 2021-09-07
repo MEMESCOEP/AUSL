@@ -12,6 +12,11 @@ import traceback
 from http.server import HTTPServer, CGIHTTPRequestHandler
 from playsound import playsound
 #soundfilename = ""
+
+customvariables = {}
+finalvalue = 0
+
+
 def play_sound(flnm):
 	#t = threading.thread(tagret=none)
 	#t.daemon = True
@@ -242,6 +247,7 @@ class BasicExecute:
 				return self.env[node[1]]
 			except LookupError:
 				print(bcolors.FAIL + "Undefined variable '"+node[1]+"'" + bcolors.ENDC + '\n')
+				sys.exit(1)
 				return None
 
 
@@ -273,8 +279,8 @@ if __name__ == '__main__':
 				print("AUSL Programming Language help")
 				print("Usage:")
 				print(" ./AUSL.bin [program name]")
-				sys.exit(0)
-				#filename = "myprogram.ausl"
+				#sys.exit(0)
+				filename = "myprogram.ausl"
 				#pass
 			file1 = open(filename, 'r')
 			Lines = file1.readlines()
@@ -304,6 +310,23 @@ if __name__ == '__main__':
 
 
 
+							if "File.Create(" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									try:
+										0+0
+										#output = os.system ((text.split("os.do(",1)[1])[:-1])
+										#print(output)
+									except:
+										print("error")
+									#text = ""
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+									sys.exit(1)
 
 
 
@@ -480,6 +503,14 @@ if __name__ == '__main__':
 									sys.exit(1)
 
 
+							if "=" in text and not "##" in text:
+								#print("lol")
+								doLexing = False
+								#length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								#last_char = text[length -1]
+								
+
 							
 
 
@@ -492,17 +523,7 @@ if __name__ == '__main__':
 								#Get last character of string i.e. char at index position len -1
 								last_char = text[length -1]
 								if last_char == ")":
-									#start = text. find(",") + len(",")
-									#end = text.find(")")
-									#substring = text[start:end]
-									#print(substring.split())
-									#urladdr = text.split("download(",1)[1][:-1]
-									#urladdr = urladdr.split(",")[0]
-									#print(urladdr)
-									#r = requests.get(urladdr, allow_redirects=True)
-									#open(substring, 'wb').write(r.content)
-									#print ((text.split("download(",1)[1])[:-1])
-									#text = ""
+									
 									0+0
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
@@ -512,7 +533,7 @@ if __name__ == '__main__':
 
 
 							if "inp(" in text and not "##" in text:
-								#print("lol")
+								
 								doLexing = False
 								
 								length = len(text)
@@ -520,18 +541,14 @@ if __name__ == '__main__':
 								last_char = text[length -1]
 								if last_char == ")":
 
-									#print("wat")
-									data = input ((text.split("inp(",1)[1])[:-1])
-									def var_assign(self, p):
-										return ('var_assign', "A", data)
-									#text = ""
+									0+0
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction!" + bcolors.ENDC)
 									sys.exit(1)
 
 
 
-							#print(doLexing)
+							
 
 							if text and doLexing == True:
 									if text != "beanslmao" or text != "exit":
@@ -564,7 +581,7 @@ if __name__ == '__main__':
 						
 						if doneFirstParse == True:
 							text = line.strip()
-							#print("LOL")
+							
 							file1 = open(filename, 'r')
 							Lines = file1.readlines()
 							doLexing = True
@@ -591,31 +608,48 @@ if __name__ == '__main__':
 									print (bcolors.FAIL + message + bcolors.ENDC)
 							if text == "debug":
 								doLexing = False
-								print("DEBUG lol")
-								#break
-							if "print(" in text and not "##" in text:
-								#print("lol")
+								print("DEBUG mode lol")
+								
+							if "print(\"" in text and not "##" in text:
+								
 								doLexing = False
 								length = len(text)
 								#Get last character of string i.e. char at index position len -1
 								last_char = text[length -1]
 								if last_char == ")":
+									data = (((text.split("print(\"",1)[1])[:-1]))
+									datavar = data.split('"')[1::2]
+									datavar2 = ""
+									for i in datavar:
+										datavar2 = i
+										datavar2 = datavar2.replace(" ","")
+									datavar2 = datavar2.replace("%","")
 									
-									print ((text.split("print(",1)[1])[:-1])
-									#text = ""
+									if (datavar2 + " ") in customvariables:
+										data = (((text.split("print(\"",1)[1])[:-1]))
+										
+										data = data.replace("\"", "")
+										data = str(data).replace("%","")
+										data = str(data).replace(datavar2,"")
+										data = data + (customvariables[(datavar2 + " ")])
+										print(data)
+									else:
+										data = (((text.split("print(\"",1)[1])[:-1]))
+										data = data.replace("\"","")
+										
+										print(data)
+									
 								else:
-									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+								 	print(bcolors.FAIL + "Missing Parentheses or Quote at end of instruction: '" + text + "'" + bcolors.ENDC)
 
 							if "pause(" in text and not "##" in text:
-								#print("lol")
 								doLexing = False
 								length = len(text)
-								#Get last character of string i.e. char at index position len -1
 								last_char = text[length -1]
 								if last_char == ")":
 									
 									time.sleep(int((text.split("pause(",1)[1])[:-1]))
-									#text = ""
+									
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
@@ -623,7 +657,6 @@ if __name__ == '__main__':
 
 
 							if "File.Delete(" in text and not "##" in text:
-								#print("lol")
 								doLexing = False
 								length = len(text)
 								#Get last character of string i.e. char at index position len -1
@@ -631,11 +664,29 @@ if __name__ == '__main__':
 								if last_char == ")":
 									
 									os.remove((text.split("File.Delete(",1)[1])[:-1])
-									#text = ""
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
 
+
+
+
+							if "File.Create(" in text and not "##" in text:
+								
+								doLexing = False
+								length = len(text)
+								#Get last character of string i.e. char at index position len -1
+								last_char = text[length -1]
+								if last_char == ")":
+									
+									open((text.split("File.Create(",1)[1])[:-1], 'w').write("")
+									
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+							
 
 							if "File.Write(" in text and not "##" in text:
 								#print("lol")
@@ -685,6 +736,92 @@ if __name__ == '__main__':
 									#text = ""
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+							if "=" in text and not "##" in text:
+								
+								doLexing = False
+								
+								varname = text.split("=", 1)
+								subvarname = varname[0]
+								
+
+								vardata = (((text.split("=",1)[1])))
+
+								if "\"" in vardata:
+									customvariables[subvarname] = vardata.replace("\"","")
+
+								else:
+									customvariables[subvarname] = vardata
+
+
+								result = ''
+								
+								
+								if "+" in vardata:
+									vardata = (((text.split("=",1)[1])))
+									vardata = ((vardata.replace("+",",")))
+									vardata2 = vardata.split(",")
+									vardata2 = vardata.replace(" ","")
+									
+									counter = 0
+									length = len(customvariables)
+									
+									
+									for x in range(length):
+										
+										if True:
+											if True:  
+												0+0
+												
+												if "," in vardata2:
+													
+													vardata2 = vardata2.split(',')
+													length2 = len(vardata2)
+													
+													for i in vardata2:
+														
+														vals = customvariables.get(i + ' ').replace(" ", "")
+														if "\"" in vals:
+															vals = vals.replace("\"", "")
+															result = result+vals
+															customvariables[varname[0]] = result
+														else:
+															
+															nums = []
+															#vals = vals.replace("\"", "")
+															#for word in result:
+															#	if word.isdigit():
+															#		nums.append(int(word))
+															#		print(word)
+
+
+															for word in vals:
+																if word.isdigit():
+																	#nums.append(int(word))
+																	finalvalue += int(word)
+																	#print(word)
+
+															#print(finalvalue)
+															
+															customvariables[varname[0]] = finalvalue  
+														
+														
+													
+												counter += 1
+											
+
+								else:
+									vardata = ((text.split("=",1)[1]))
+									customvariables[varname[0]] = vardata
+								if (str(vardata) + " ") in customvariables:
+									0+0
+									
+							if (text + " ") in customvariables:
+								0+0
+								doLexing = False
+								print(customvariables[(text + " ")])
+								
 
 							if "Sound.Play(" in text and not "##" in text:
 								#print("lol")
@@ -784,9 +921,17 @@ if __name__ == '__main__':
 								if last_char == ")":
 
 									#print("wat")
+									
+									try:
+										varname = text.split("=", 1)
+										if "inp(" in varname[0]:
+											sys.exit(1)
+										subvarname = varname[0]
+										
+									except:
+										0+0
 									data = input ((text.split("inp(",1)[1])[:-1])
-									def var_assign(self, p):
-										return ('var_assign', "A", data)
+									customvariables[varname[0]] = data
 									#text = ""
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction!" + bcolors.ENDC)
