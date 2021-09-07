@@ -24,12 +24,11 @@ and run it as root:
 
 ---
 ### Change log:
-Version A-0.10
-- Fixed release.py 'File not found: myprogram.ausl' error
-- Updated release.py to install build and project dependencies
+Version A-0.11
+- Updated release.py to download new files
 - Added new feature(s) to AUSL.py:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File IO Operations {Create/Write, Delete}<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound Playback
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Better variable assignment<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ability to get user input
 
 <br>
 
@@ -39,8 +38,7 @@ Version A-0.10
 
 ### TO DO:
 - Fix playsound bug
-- Add custom AUSL > Binary compiler
-- Update release.py
+- Add if,else,while statements
 
 
 
