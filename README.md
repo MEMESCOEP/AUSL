@@ -23,5 +23,18 @@ and run it as root:
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File IO Operations {Create/Write, Delete}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Sound Playback
 
+<br>
+
+---
+
+<br>
+
+### TO DO:
+- Fix playsound bug
+- Add custom AUSL > Binary compiler
+- Update release.py
+
+
+
 <br><br><br>(C) Andrew Maney 2021
 
