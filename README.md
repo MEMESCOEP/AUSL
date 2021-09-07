@@ -9,7 +9,7 @@ Ubuntu 16.04.6 or later
 release.py (this will install all build/install dependencies)
 ```
 
-To get started, download 
+To get started, [download](https://github.com/MEMESCOEP/AUSL/main/blob/release.py) 
 ```release.py```
 and run it as root:
 
