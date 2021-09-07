@@ -17,6 +17,12 @@ and run it as root:
 
 ---
 
+### Useful links
+- [Visit the wiki!](https://github.com/MEMESCOEP/AUSL/wiki)
+
+
+
+---
 ### Change log:
 Version A-0.10
 - Fixed release.py 'File not found: myprogram.ausl' error
