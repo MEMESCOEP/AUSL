@@ -4,7 +4,7 @@
 ### Operating System Support
 Currently supported OSes:
 - Any linux distro which has the 'apt' package manager
-
+- ***Win32 x86_64 support coming soon!***
 
 
 ---
