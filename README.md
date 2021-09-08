@@ -19,6 +19,7 @@ and run it as root:
 
 ### Useful links
 - [Visit the wiki!](https://github.com/MEMESCOEP/AUSL/wiki)
+- [Visit the AUSL website!](https://memescoep.github.io/AUSL/)
 
 
 
