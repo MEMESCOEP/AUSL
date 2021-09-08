@@ -1,5 +1,5 @@
 # AUSL
-#### Accessible Unified Source Language (AUSL) is a programming language built to develop simple linux console applications.
+#### Accessible Unified Source Language (AUSL) is a programming language designed ppto develop simple linux console applications.
 ---
 ### Operating System Support
 Currently supported OSes:
@@ -12,8 +12,8 @@ Currently supported OSes:
 ```
 Python 3.X
 Python 3.X's pip module
-Ubuntu 16.04.6 or later
-release.py (this will install all build/install dependencies)
+Any linux distribution that uses the 'apt' package manager
+release.py (this will install all dependencies)
 ```
 
 To get started, [download](https://github.com/MEMESCOEP/AUSL/blob/main/release.py) 
