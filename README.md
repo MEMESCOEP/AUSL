@@ -2,7 +2,9 @@
 #### Accessible Unified Source Language (AUSL) is a programming language designed to develop simple linux console applications.
 
 ### Requirements
+
 ```
+<Linux>
 Python 3.X
 Python 3.X's pip module
 Any linux distribution that uses the 'apt' package manager
