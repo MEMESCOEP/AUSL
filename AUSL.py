@@ -1,3 +1,4 @@
+#from _typeshed import NoneType
 from sly import Lexer
 from sly import Parser
 import urllib.request
@@ -11,6 +12,16 @@ import subprocess
 import traceback
 from http.server import HTTPServer, CGIHTTPRequestHandler
 from playsound import playsound
+import linecache
+import re
+from tkinter import *
+from tkinter import messagebox
+import operator
+
+top = None
+#top = Tk()
+#top.geometry("100x100")
+
 #soundfilename = ""
 
 customvariables = {}
@@ -261,13 +272,12 @@ class BasicExecute:
 
 
 if __name__ == '__main__':
+	skipline = False
 	doLexing = True
 	doneFirstParse = False
 	Debug = False
-	#playsound("./ome.wav")
 	lexer = BasicLexer()
 	parser = BasicParser()
-	#print('GFG Language')
 	env = {}
 	
 	if True:
@@ -298,7 +308,7 @@ if __name__ == '__main__':
 				
 				text = line.strip()
 
-
+				
 
 				if doneFirstParse == False:
 							count2 += 1;
@@ -573,11 +583,43 @@ if __name__ == '__main__':
 				
 					
 				if True:
+
 					file1 = open(filename, 'r')
 					Lines = file1.readlines()
 					linenumber = 0
+					isinWhile = None
 
 					for line in Lines:
+
+						"""if( "while(" in line.strip()):
+									print("in while")
+									isinWhile = True
+
+						if(isinWhile and not skipline):
+							#print(line.strip())
+							if("};" in line.split()):
+								print("Not in while")
+								isinWhile = False
+						else:
+							0+0	
+
+						"""
+
+
+						if(isinWhile):
+							#skipline = True
+							if(text == "};"):
+								#print("no while loop anymore")
+								isinWhile = False
+							else:
+								#doLexing = False
+								0+0
+						
+
+						if skipline == True:
+							skipline = False
+							#print("Stop")
+							continue
 						
 						if doneFirstParse == True:
 							text = line.strip()
@@ -592,7 +634,287 @@ if __name__ == '__main__':
 
 
 
-							if text == "httpserver.startServer()":
+
+
+
+							if "if(" in text and not "##" in text and not isinWhile:
+								doLexing = False
+								length = len(text)
+								last_char = text[length -1]
+								ifstatement = ((text.split("if(",1)[1])[:-1])
+								if last_char == ")":									
+									data = (((text.split("if(",1)[1])[:-1]))
+									data2 = data.split("==")									
+									data2 = str(data2[0]).replace(" ", "")
+									data3 = data.split("==")									
+									data3 = str(data3[1]).replace(" ", "")
+									datavar2 = ""
+									
+									
+									if (data2 + " ") in customvariables:
+										0+0
+										if customvariables[(data2 + " ")] == data3:
+											0+0
+
+										else:
+											skipline = True
+											
+										
+									else:
+										0+0
+										
+									
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
+							if ":{" in text and not "##" in text:
+								doLexing = False
+
+							
+							if "};" in text and not "##" in text:
+								doLexing = False
+
+
+
+							if "while(" in text and not "##" in text:
+								isinWhile = True
+								#print("While")
+								doLexing = False
+								
+								length = len(text)
+								last_char = text[length -1]
+								ifstatement = ((text.split("while(",1)[1])[:-1])
+								if last_char == ")":									
+									data = (((text.split("while(",1)[1])[:-1]))
+									data2 = None
+									operator = ""
+									if("<=" in data):
+										data2 = data.split("<=")									
+										data2 = str(data2[0]).replace(" ", "")
+										data3 = data.split("<=")									
+										data3 = str(data3[1]).replace(" ", "")
+										operator = "<="
+
+									if(">=" in data):
+										data2 = data.split(">=")									
+										data2 = str(data2[0]).replace(" ", "")
+										data3 = data.split(">=")									
+										data3 = str(data3[1]).replace(" ", "")
+										operator = ">="
+
+									if("==" in data):
+										data2 = data.split("==")									
+										data2 = str(data2[0]).replace(" ", "")
+										data3 = data.split("==")									
+										data3 = str(data3[1]).replace(" ", "")
+										operator = "=="
+
+									if("!=" in data):
+										data2 = data.split("!=")									
+										data2 = str(data2[0]).replace(" ", "")
+										data3 = data.split("!=")									
+										data3 = str(data3[1]).replace(" ", "")
+										operator = "!="
+
+
+
+									datavar2 = ""
+									
+
+									data = """"""
+									result = """"""
+									res2 = """"""
+									res = """"""
+											#data += ""
+									with open(filename) as myFile:
+										#data = myFile.read()
+										#print("LoL")
+										for li in iter(lambda: myFile.readline().rstrip(), '};'):
+        										
+												res += (li.lstrip(":{") + "!@")
+
+												#print(li)
+												#print(result)
+										#result = data.split("};")  # use your \-1 (whatever that means) here
+										res2 = str(str((res).split(":{")).replace("!@", "\n")).replace("']","")
+										#print(str(str(res).split("while(")[1]).replace(")","",1))
+										con2 = 0
+										if(con2 == 0):
+											con2 += 1
+											result = str(str(res2).split("while(")[1]).replace(")", "~", 1).split("~")[1]
+									#print(str(result))
+									#data2 = result
+									#continue
+
+									
+									if(operator == "<="):
+											#print(str(customvariables[(data2 + " ")]).replace(" ",""))
+											while str(customvariables[(data2 + " ")]).replace(" ","") <= data3:
+												#time.sleep(1)
+												if(True):
+
+													#print(customvariables)
+											#print("LoL")
+									#		0+0
+											#print(result)
+													#time.sleep(1)
+													for lns in str(result).splitlines():
+
+
+														if ("+=") in lns and not "##" in lns:
+															#print("+=")
+															vardata = (((lns.split("=",1)[1])))
+															#vardata = ((vardata.replace("+",",")))
+															vardata2 = vardata.split(",")
+															vardata2 = vardata.replace(" ","")
+															varname = lns.split("+=", 1)
+															subvarname = varname[0]
+															deeta = int(customvariables[varname[0]])
+															deeta += (int(vardata2))
+															if deeta > int(customvariables[(data2 + " ")]) - 2:
+																customvariables[varname[0]] = deeta - 0
+																continue
+															else:
+																customvariables[varname[0]] = deeta
+															#print(deeta)
+															#print(deeta)
+
+
+
+														try:
+															#print("running...")
+															exec(str(lns))
+														except:
+															0+0
+										
+									
+									#continue
+									if(operator == ">="):
+										while (str(customvariables[(data2 + " ")]).replace(" ","")) >= data3:
+											if(True):
+
+													#print(customvariables)
+											#print("LoL")
+									#		0+0
+											#print(result)
+													#time.sleep(1)
+													for lns in str(result).splitlines():
+
+
+														if ("+=") in lns and not "##" in lns:
+															#print("+=")
+															vardata = (((lns.split("=",1)[1])))
+															#vardata = ((vardata.replace("+",",")))
+															vardata2 = vardata.split(",")
+															vardata2 = vardata.replace(" ","")
+															varname = lns.split("+=", 1)
+															subvarname = varname[0]
+															deeta = int(customvariables[varname[0]])
+															deeta += (int(vardata2))
+															if deeta > int(customvariables[(data2 + " ")]) - 2:
+																customvariables[varname[0]] = deeta - 0
+																continue
+															else:
+																customvariables[varname[0]] = deeta
+															#print(deeta)
+															#print(deeta)
+
+
+
+														try:
+															#print("running...")
+															exec(str(lns))
+														except:
+															0+0
+										
+									#print(data2)
+									if(operator == "=="):
+										while str(customvariables[(data2 + " ")]).replace(" ","") == data3:
+											if(True):
+
+													#print(customvariables)
+											#print("LoL")
+									#		0+0
+											#print(result)
+													#time.sleep(1)
+													for lns in str(result).splitlines():
+
+
+														if ("+=") in lns and not "##" in lns:
+															#print("+=")
+															vardata = (((lns.split("=",1)[1])))
+															#vardata = ((vardata.replace("+",",")))
+															vardata2 = vardata.split(",")
+															vardata2 = vardata.replace(" ","")
+															varname = lns.split("+=", 1)
+															subvarname = varname[0]
+															deeta = int(customvariables[varname[0]])
+															deeta += (int(vardata2))
+															if deeta > int(customvariables[(data2 + " ")]) - 2:
+																customvariables[varname[0]] = deeta - 0
+																continue
+															else:
+																customvariables[varname[0]] = deeta
+															#print(deeta)
+															#print(deeta)
+
+
+
+														try:
+															#print("running...")
+															exec(str(lns))
+														except:
+															0+0
+										
+									if (data2 + " ") in customvariables:
+										#print(data2)
+										#print(data3, customvariables[(data2 + " ")])
+										#while customvariables[(data2 + " ")] == data3:
+											#print("LoL")
+										#	0+0
+										0+0
+										#print("lmao")	
+										
+									else:
+										0+0
+										
+									
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+
+
+							if "goto(" in text and not "##" in text and not isinWhile:
+								doLexing = False
+								length = len(text)
+								last_char = text[length -1]
+								lookup = ((text.split("goto(",1)[1])[:-1])
+								#print(lookup)
+								linenumber = 0
+								if last_char == ")":
+									with open(filename) as file2:
+										for num, linegoto in enumerate(file2):
+											if lookup in linegoto:
+												linenumber = num
+									#print((text.split("goto(",1)[1])[:-1])
+									goto_line = linecache.getline(filename, linenumber + 1)
+									print(goto_line)
+									print(linenumber)
+									
+									#file1.seek((text.split("goto(",1)[1])[:-1])
+									
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
+
+
+
+							
+							if text == "httpserver.startServer()" and not isinWhile:
 								try:
 									doLexing = False
 									# Make sure the server is created at current directory
@@ -606,11 +928,11 @@ if __name__ == '__main__':
 									template = ("\nAn exception of type '{0}' occurred at line " + str(linenumber) + ": '" + text + "'. Arguments:\n{1!r}\n")
 									message = template.format(type(ex).__name__, ex.args)
 									print (bcolors.FAIL + message + bcolors.ENDC)
-							if text == "debug":
+							if text == "debug" and not isinWhile:
 								doLexing = False
 								print("DEBUG mode lol")
 								
-							if "print(\"" in text and not "##" in text:
+							if "print(\"" in text and not "##" in text and not isinWhile:
 								
 								doLexing = False
 								length = len(text)
@@ -642,7 +964,7 @@ if __name__ == '__main__':
 								else:
 								 	print(bcolors.FAIL + "Missing Parentheses or Quote at end of instruction: '" + text + "'" + bcolors.ENDC)
 
-							if "pause(" in text and not "##" in text:
+							if "pause(" in text and not "##" in text and not isinWhile:
 								doLexing = False
 								length = len(text)
 								last_char = text[length -1]
@@ -653,10 +975,49 @@ if __name__ == '__main__':
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
+							if "button(" in text and not "##" in text and not isinWhile:
+								#print("lol")
+								doLexing = False
+								txt = text
+								length = len(text)
+								last_char = text[length -1]
+								if last_char == ")":
+									pattern = "button(\(.*?)\,"
+
+
+									substring = re.search(pattern, txt).group(1)
+									sub2 = substring.replace("(","")
+
+									pt2 = "(\(.*?)\,"
+									txt = text
+									substring2 = ",".join(txt.split(",", 2)[:-1])
+									
+									sub3 = substring2.replace("(","")
+									sub3 = sub3.rsplit(",")[1]
+									#sub3 =
+									#print(sub3)
+
+									top = Tk()
+									#print("tkinter lol")
+									def helloCallBack():
+										print("Hello World")
+									#print((((txt.split(",",1)[1])[:-1]).rsplit(","))[1])
+									B = Button(top, text = ((((txt.split(",",1)[1])[:-1]).rsplit(","))[1].replace(" ","", 1)), command = helloCallBack)
+									txt = text
+									x = ((txt.split("button(",1)[1])[:-1])
+									y = ((txt.split(",",1)[1])[:-1])
+									B.place(x = int(sub2),y = int(sub3))
+
+									#B.pack()
+									top.mainloop()
+									#time.sleep()
+									
+								else:
+									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
 
 
-							if "File.Delete(" in text and not "##" in text:
+							if "File.Delete(" in text and not "##" in text and not isinWhile:
 								doLexing = False
 								length = len(text)
 								#Get last character of string i.e. char at index position len -1
@@ -671,15 +1032,17 @@ if __name__ == '__main__':
 
 
 
-							if "File.Create(" in text and not "##" in text:
+							if "File.Create(" in text and not "##" in text and not isinWhile:
 								
 								doLexing = False
 								length = len(text)
 								#Get last character of string i.e. char at index position len -1
 								last_char = text[length -1]
 								if last_char == ")":
-									
-									open((text.split("File.Create(",1)[1])[:-1], 'w').write("")
+									try:
+										open((text.split("File.Create(",1)[1])[:-1], 'w').write("")
+									except Exception as ex:
+										print("Error: ", ex)
 									
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
@@ -688,7 +1051,7 @@ if __name__ == '__main__':
 
 							
 
-							if "File.Write(" in text and not "##" in text:
+							if "File.Write(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								length = len(text)
@@ -718,7 +1081,7 @@ if __name__ == '__main__':
 
 
 
-							if "os.do(" in text and not "##" in text:
+							if "os.do(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								length = len(text)
@@ -738,7 +1101,7 @@ if __name__ == '__main__':
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 
 
-							if "=" in text and not "##" in text:
+							if "=" in text and not "##" in text and not isinWhile:
 								
 								doLexing = False
 								
@@ -781,7 +1144,10 @@ if __name__ == '__main__':
 													
 													for i in vardata2:
 														
-														vals = customvariables.get(i + ' ').replace(" ", "")
+														if(not (customvariables.get(i + ' ')) == None):
+															vals = customvariables.get(i + ' ').replace(" ", "")
+
+														
 														if "\"" in vals:
 															vals = vals.replace("\"", "")
 															result = result+vals
@@ -817,13 +1183,13 @@ if __name__ == '__main__':
 								if (str(vardata) + " ") in customvariables:
 									0+0
 									
-							if (text + " ") in customvariables:
+							if (text + " ") in customvariables and not isinWhile:
 								0+0
 								doLexing = False
 								print(customvariables[(text + " ")])
 								
 
-							if "Sound.Play(" in text and not "##" in text:
+							if "Sound.Play(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								length = len(text)
@@ -849,7 +1215,7 @@ if __name__ == '__main__':
 									#sys.exit(1)
 
 
-							if "os.version" in text and not "##" in text:
+							if "os.version" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								try:
@@ -880,7 +1246,7 @@ if __name__ == '__main__':
 
 							
 
-							if "download(" in text and not "##" in text:
+							if "download(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								length = len(text)
@@ -911,7 +1277,7 @@ if __name__ == '__main__':
 
 
 
-							if "inp(" in text and not "##" in text:
+							if "inp(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
 								
@@ -940,7 +1306,7 @@ if __name__ == '__main__':
 
 							#print(doLexing)
 
-							if text and doLexing == True:
+							if text and doLexing == True and not isinWhile:
 									if text != "DEBUG" or text != "exit":
 																try:
 																															tree = parser.parse(lexer.tokenize(text))
@@ -958,14 +1324,3 @@ if __name__ == '__main__':
 			print("error")
 		
 		
-
-"""class httpserver():
-	
-		# Make sure the server is created at current directory
-		os.chdir('.')
-		# Create server object listening the port 80
-		server_object = HTTPServer(server_address=('', 80), RequestHandlerClass=CGIHTTPRequestHandler)
-		# Start the web server
-		server_object.serve_forever()
-
-"""
