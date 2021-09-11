@@ -38,11 +38,9 @@ Currently supported OSes:
 
 
 ### Change log:
-Version A-0.11
-- Updated release.py to download new files
+Version A-0.20
 - Added new feature(s) to AUSL.py:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Better variable assignment<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ability to get user input
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if and while statements
 
 <br>
 
@@ -52,8 +50,9 @@ Version A-0.11
 
 ### TO DO:
 - Fix playsound bug
-- Add if,else,while statements
+- Add else,try catch,exception statements
 - Add support for the Windows operating system
+- Add GUI statments
 
 
 
