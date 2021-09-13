@@ -50,9 +50,10 @@ Version A-0.20
 
 ### TO DO:
 - Fix playsound bug
-- Add else,try catch,exception statements
+- Add else,try catch,exception statements (HIGH PRIORITY)
 - Add support for the Windows operating system
 - Add GUI statments
+- Add variable access from statements (HIGH PRIORITY)
 
 
 
