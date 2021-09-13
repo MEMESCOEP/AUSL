@@ -2,9 +2,10 @@
 ##AUSL Programming Language (c) Andrew Maney 2021
 	
 
-##Clear Console
+##Clear Console and print message
 os.do(clear)
 print("AUSL Example Program!")
+
 
 ##Assigning Variables Example
 l1 = "A"
@@ -28,6 +29,30 @@ n3
 string
 
 
+
+##While loop example
+lo = 0
+while(lo <= 3)
+:{
+print("I will print 4 times!")
+
+
+lo += 1
+string
+
+};
+
+
+
+
+
+
+##If statement example
+if(string == ABCDE)
+print("this line is printed if string equals ABCDE")
+
+
+
 ##Print using "print(<string>)"!
 print("Hello World!")
 
@@ -39,6 +64,8 @@ print("Hello World!")
 ##Get User Input and Print it back!
 input = inp(Enter Anything! >> )
 print("You Typed:" %input%)
+if(input == exit)
+end
 
 print("")
 
@@ -82,8 +109,10 @@ print("Done.")
 
 ##Play sounds with "Sound.Play(<FILENAME>)"!
 print("Playing Sound...")
-Sound.Play(./ome.wav)
+Sound.Play(./AUSL_latest/ome.wav)
 print("Done.")
+
+
 
 
 
@@ -95,4 +124,6 @@ print("Done.")
 
 
 print("End of example :)")
+
+
 end
