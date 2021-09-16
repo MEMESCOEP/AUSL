@@ -1,5 +1,5 @@
 # AUSL
-#### Accessible Unified Source Language (AUSL) is a programming language designed to develop simple linux console applications.
+#### Accessible Unified Source Language (AUSL) is a programming language designed to develop simple linux applications.
 
 ### Requirements
 
