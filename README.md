@@ -1,14 +1,14 @@
 # AUSL
 #### Accessible Unified Source Language (AUSL) is a programming language designed to develop simple linux applications.
-
+```(C) Andrew Maney 2021```
 ### Requirements
 
 ```
 <Linux>
-Python 3.X
-Python 3.X's pip module
-Any linux distribution that uses the 'apt' package manager
-release.py (this will install all dependencies)
+  Python 3.X
+  Python 3.X's pip module
+  Any linux distribution that uses the 'apt' package manager
+  release.py (this will install all dependencies)
 ```
 
 To get started, [download](https://github.com/MEMESCOEP/AUSL/blob/main/release.py) 
@@ -17,13 +17,18 @@ and run it as root:
 
 >&nbsp;sudo python3 release.py&nbsp;
 
+
+<strong><bold>Wait for the script to finish.<br><i>(This will take a long time, as it downloads/installs dependencies and compiles AUSL.py to an executable binary.)</i></bold></strong>
+
 ---
 
 
 
 ### Useful links
+- [See the License](https://github.com/MEMESCOEP/AUSL/blob/main/LICENSE)
 - [Visit the wiki!](https://github.com/MEMESCOEP/AUSL/wiki)
 - [Visit the AUSL website!](https://memescoep.github.io/AUSL/)
+
 
 
 ---
@@ -55,7 +60,7 @@ Version A-0.20
 - Add GUI statments
 - Add variable access from statements (HIGH PRIORITY)
 
-
-
-<br><br><br>```(C) Andrew Maney 2021```
+<br><br><br>
+If you have any questions, please send an email to ```xxxmemescoepxxx@gmail.com```.<br>
+```(C) Andrew Maney 2021```
 
