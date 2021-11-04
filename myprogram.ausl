@@ -3,7 +3,7 @@
 	
 
 ##Clear Console and print message
-os.do(clear)
+clr
 print("AUSL Example Program!")
 
 
