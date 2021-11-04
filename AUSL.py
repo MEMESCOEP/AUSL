@@ -1189,6 +1189,18 @@ if __name__ == '__main__':
 								print(customvariables[(text + " ")])
 								
 
+
+
+							if "clr" in text and not "##" in text and not isinWhile:
+								#print("lol")
+								doLexing = False
+								if(platform.system() == "Windows"):
+								    os.system("cls")
+								elif(platform.system() == "Linux"):
+								    os.system("clear")
+								
+
+                                                        
 							if "Sound.Play(" in text and not "##" in text and not isinWhile:
 								#print("lol")
 								doLexing = False
