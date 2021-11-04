@@ -1,5 +1,7 @@
 @echo off
-echo "AUSL Build Script"
-SET pypth = %1
-set pyexe = %pypth% + python.exe
-%pyexe% -m nuitka --standalone --onefile --follow-imports AUSL.py
+cls
+echo AUSL Build Script
+set pypth=%1
+set pyexe=%pypth%\python.exe -m nuitka --standalone --onefile --follow-imports AUSL.py
+echo PYPATH: "%pyexe%"
+start %pyexe%
