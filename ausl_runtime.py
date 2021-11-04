@@ -1213,6 +1213,16 @@ if __name__ == '__main__':
 								else:
 									print(bcolors.FAIL + "Missing Parentheses at end of instruction: '" + text + "'" + bcolors.ENDC)
 									#sys.exit(1)
+							if "clr" in text and not "##" in text and not isinWhile:
+								#print("lol")
+								doLexing = False
+								if(platform.system() == "Windows"):
+																	os.system("cls")
+								elif(platform.system() == "Linux"):
+																	os.system("clear")
+								
+
+
 
 
 							if "os.version" in text and not "##" in text and not isinWhile:
