@@ -15,11 +15,7 @@ def isAdmin():
 	return is_admin
 
 
-pythonpath = ""
-for p in sys.path:
-    pythonpath = p
-    break
-
+pythonpath = os.path.dirname(sys.executable)
 print("PYTHON PATH: " + pythonpath)
 
 
