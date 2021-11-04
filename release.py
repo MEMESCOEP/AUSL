@@ -5,6 +5,7 @@ import requests
 import sys
 import ctypes
 import platform
+import shutil
 
 def isAdmin():
 	try:
@@ -236,10 +237,15 @@ elif(platform.system() == "Windows"):
 	print("Compiling...")
 	os.system(runbuild)
 	print("Done.")
+	print("Cleaning Up...")
+	shutil.rmtree(".\\AUSL.build")
+	shutil.rmtree(".\\AUSL.dist")
+	shutil.rmtree(".\\AUSL.onefile-build")
+	print("Done.")
 	print("AUSL is installed! you can start your own programs using \".\\AUSL.exe <PROGRAM_NAME.ausl>\"")
 	deeta = input("Run the example program? (Y/N) >> ")
 	if deeta == "Y" or deeta == "y":
 		pathofbin = cwd
-		os.system("start .\AUSL_latest\AUSL.exe .\AUSL_latest\myprogram.ausl")  
+		os.system("start .\AUSL.exe .\AUSL_latest\myprogram.ausl")  
 		
 		
